@@ -1,13 +1,15 @@
 package com.danielmonteiro.springboot.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "tb_user")
@@ -18,6 +20,9 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome,email,phone,password;
+	
+	@OneToMany(mappedBy = "client") //Associação um para muitos, com nome do atrubuto mapeado
+	private List<Order> orders = new ArrayList<>();
 	
 	//Construtores
 	public User() {
@@ -32,11 +37,16 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	//Getters and Setters
+	//Getters and Setters 
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
 	public Long getId() {
 		return id;
 	}
 
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
