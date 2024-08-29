@@ -3,10 +3,8 @@ package com.danielmonteiro.springboot.entities;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
-
 import com.danielmonteiro.springboot.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
