@@ -8,10 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import com.danielmonteiro.springboot.entities.Category;
 import com.danielmonteiro.springboot.entities.Order;
+import com.danielmonteiro.springboot.entities.OrderItem;
 import com.danielmonteiro.springboot.entities.Product;
 import com.danielmonteiro.springboot.entities.User;
 import com.danielmonteiro.springboot.entities.enums.OrderStatus;
 import com.danielmonteiro.springboot.repositories.CategoryRepository;
+import com.danielmonteiro.springboot.repositories.OrderItemRepository;
 import com.danielmonteiro.springboot.repositories.OrderRepository;
 import com.danielmonteiro.springboot.repositories.ProductRepository;
 import com.danielmonteiro.springboot.repositories.UserRepository;
@@ -31,6 +33,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 	
 	// Metodo a ser executado quando a aplicação ser iniciada
 	@Override
@@ -63,6 +68,13 @@ public class TestConfig implements CommandLineRunner {
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 	}
 
 }

@@ -2,7 +2,10 @@ package com.danielmonteiro.springboot.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 import com.danielmonteiro.springboot.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
@@ -11,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,6 +35,9 @@ public class Order implements Serializable {
 	@ManyToOne //Associação muitos para um
 	@JoinColumn(name = "client_id") //Nome da coluna de chave estrangeira
 	private User client;
+	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
 
 	//Construtores
 	public Order() {
@@ -75,6 +82,10 @@ public class Order implements Serializable {
 
 	public void setClient(User client) {
 		this.client = client;
+	}
+	
+	public Set<OrderItem> getItems() {
+		return items;
 	}
 
 	//HashCode e Equals
