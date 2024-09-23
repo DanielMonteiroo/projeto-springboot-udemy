@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import com.danielmonteiro.springboot.entities.pk.OrdemItemPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -31,7 +30,6 @@ public class OrderItem implements Serializable {
 		this.quantity = quantity;
 		this.price = price;
 	}
-
 
 	//Getters e Setters
 	@JsonIgnore
