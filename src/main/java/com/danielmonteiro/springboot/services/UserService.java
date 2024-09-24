@@ -2,10 +2,8 @@ package com.danielmonteiro.springboot.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.danielmonteiro.springboot.entities.User;
 import com.danielmonteiro.springboot.repositories.UserRepository;
 
@@ -26,4 +24,11 @@ public class UserService {
 		return obj.get();
 	}
 	
-}
+	//Metodo inserir usuário
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
+	
+	
+	
+} 

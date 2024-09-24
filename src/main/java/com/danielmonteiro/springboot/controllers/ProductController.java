@@ -17,14 +17,14 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	//Metodo para retornar todos os usuários
+	//Metodo para retornar todos os produtos
 	@GetMapping
 	public ResponseEntity<List<Product>> findAll(){
 		List<Product> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 
-	//Metodo de busca por Id
+	//Metodo de busca produto por Id
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Product> findById(@PathVariable Long id){
 		Product obj = service.findById(id);
