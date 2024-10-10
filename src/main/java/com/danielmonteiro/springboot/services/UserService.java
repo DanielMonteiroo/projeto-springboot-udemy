@@ -34,5 +34,17 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
+	//Metodo atualizar usuário
+		public User update(Long id,User obj) {
+			User entity = repository.getReferenceById(id);
+			updateData(entity,obj);
+			return repository.save(entity);
+		}
+
+	private void updateData(User entity, User obj) {
+		entity.setNome(obj.getNome());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}//fim atualizar usuário
 	
 } 
